@@ -1,6 +1,11 @@
 import Image from "next/image";
 
-import { Card, CardContent, CardFooter } from "@/components/ui/card";
+import {
+    Card,
+    CardContent,
+    CardFooter,
+    CardHeader,
+} from "@/components/ui/card";
 
 type Props = {
   author: string;
@@ -18,19 +23,19 @@ export default function CardWithForm({
   date,
 }: Props) {
   return (
-    <Card className="w-[350px]">
+    <Card className="w-[350px] flex items-center flex-col justify-center">
+      <CardHeader>
+        <h1 className="text-xl">{author}</h1>
+      </CardHeader>
       <CardContent>
-        <div className="grid w-full items-center gap-4">
-          <div className="flex flex-col space-y-1.5">
-            <p className="text-sm">{author}</p>
-          </div>
-          <div className="w-auto h-auto flex-col">
+        <div className="grid w-full gap-4">
+          <div className="w-auto h-auto">
             <Image src={image} alt={imageAlt} width={100} height={100} />
           </div>
         </div>
       </CardContent>
-      <CardFooter className="flex justify-start">
-        <div className="flex-col flex">
+      <CardFooter>
+        <div>
           <p className="text-sm">{description}</p>
           <p className="text-sm">{date.toDateString()}</p>
         </div>
