@@ -1,3 +1,4 @@
+import { MenuBar } from "@/components/MenuBar";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { Inter as FontSans } from "next/font/google";
@@ -6,7 +7,7 @@ import "./globals.css";
 export const fontSans = FontSans({
   subsets: ["latin"],
   variable: "--font-sans",
-})
+});
 
 export const metadata: Metadata = {
   title: "Postigram",
@@ -19,7 +20,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr" suppressHydrationWarning>
+    <html lang="fr">
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -27,10 +28,17 @@ export default function RootLayout({
         <meta name="description" content={metadata.description?.toString()} />
         <link rel="icon" href="/favicon.ico" />
       </head>
-      <body className={cn(
+      <body
+        className={cn(
           "min-h-screen bg-background font-sans antialiased",
           fontSans.variable
-        )}>{children}</body>
+        )}
+      >
+        <header>
+          <MenuBar />
+        </header>
+        {children}
+      </body>
     </html>
   );
 }
