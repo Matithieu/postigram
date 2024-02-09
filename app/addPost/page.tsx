@@ -1,5 +1,6 @@
 "use client";
 
+import MyDropzone from "@/components/Dropzone";
 import { Button } from "@/components/ui/button";
 import {
     Card,
@@ -20,6 +21,10 @@ export default function AddPost() {
 
   const router = useRouter();
 
+  function handleImageDrop(acceptedFiles: File[]) {
+    console.log(acceptedFiles);
+  }
+
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     console.log("Submitted");
     event.preventDefault();
@@ -39,14 +44,18 @@ export default function AddPost() {
             {" "}
             <div className="space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="title">Title</Label>
+                <Label htmlFor="title">Titre</Label>
                 <Input
                   id="title"
-                  placeholder="Title"
+                  placeholder="Titre"
                   required
                   type="text"
                   onChange={(event) => setTitle(event.target.value)}
                 />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="content">Image</Label>
+                <MyDropzone onFileDrop={handleImageDrop} />
               </div>
               <div className="space-y-2">
                 <Label htmlFor="content">Contenu</Label>
