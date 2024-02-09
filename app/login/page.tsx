@@ -24,7 +24,7 @@ export default function Login() {
     event.preventDefault();
     if (email == "email@email.com" && password == "password") {
       console.log("Logged in");
-      router.push("/");
+      router.push("/addPost");
     }
   }
 
