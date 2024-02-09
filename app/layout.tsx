@@ -1,4 +1,5 @@
 import { MenuBar } from "@/components/MenuBar";
+import RandomSoccerBalls from "@/components/Random-Ball/RandomSoccerBalls";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { Inter as FontSans } from "next/font/google";
@@ -37,6 +38,7 @@ export default function RootLayout({
         <header>
           <MenuBar />
         </header>
+        <RandomSoccerBalls />
         {children}
       </body>
     </html>
