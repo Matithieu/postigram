@@ -13,7 +13,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { persistPost } from '@/app/addPost/action/persistData';
+import { persistPost } from '@/lib/actions/post-action/post-repository';
 
 
 export default function AddPost() {

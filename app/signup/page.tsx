@@ -1,8 +1,8 @@
 import Link from "next/link";
-import {login} from "@/lib/actions/user-action/user-repository"
 import { validateRequest } from "@/lib/auth";
 import { redirect } from "next/navigation";
-import {Form} from "@/lib/form";
+import { Form } from "@/lib/form";
+import {signup} from "@/lib/actions/user-action/user-repository";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
@@ -18,9 +18,9 @@ export default async function Page() {
 	}
 	return (
 		<>
-			<h1>Sign in</h1>
-			<Form action={login}>
-				<Label htmlFor="email">Username</Label>
+			<h1>Create an account</h1>
+			<Form action={signup}>
+				<Label htmlFor="email">Email</Label>
 				<Input name="email" id="email" />
 				<br />
 				<Label htmlFor="password">Password</Label>
@@ -28,7 +28,7 @@ export default async function Page() {
 				<br />
 				<button>Continue</button>
 			</Form>
-			<Link href="/signup">Create an account</Link>
+			<Link href="/login">Sign in</Link>
 		</>
 	);
 }

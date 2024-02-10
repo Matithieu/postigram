@@ -1,7 +1,7 @@
 "use client"
 
 import { Button } from "@/components/ui/button";
-import {pagination} from "@/app/pagination/pagination";
+import {pagination} from "@/lib/actions/post-action/post-repository";
 
 
 export function test() {

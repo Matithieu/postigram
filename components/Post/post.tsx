@@ -6,7 +6,7 @@ import {
     CardFooter,
     CardHeader,
 } from "@/components/ui/card";
-import { DtoPost } from "@/lib/Dto-post";
+import { DtoPost } from "@/lib/dto-post";
 
 
 

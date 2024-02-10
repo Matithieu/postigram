@@ -1,6 +1,6 @@
 import CardWithForm from "@/components/Post/post";
-import fetchPost from "./action/fetchData";
-import type { DtoPost } from "@/lib/Dto-post";
+import {fetchPost} from "@/lib/actions/post-action/post-repository"
+import type { DtoPost } from "@/lib/dto-post";
 
 let posts: DtoPost[]  = [];
 export async function fetchData() {
