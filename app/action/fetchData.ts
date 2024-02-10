@@ -2,24 +2,23 @@
 
 import {db} from "@/lib/config-db";
 import {Post} from "@/lib/schema";
-import { PgSelectBuilder } from "drizzle-orm/pg-core";
+import {z} from "zod";
+import { PostSchema } from "@/lib/Dto-post";
 
-
-export type DtoPost =  {
-    author: string | null 
-    description: string | null
-    image: string | null
-    date: Date | null
-}
+const postArraySchema  = z.array(PostSchema);
 
 export default async function fetchPost() {
 
     const data = await db.select({name:Post.name,author:Post.author,description:Post.description,image:Post.image_url,date:Post.createdAt}).from(Post);
     console.log(data);
-        const result : DtoPost[] = data;
-        console.log("result",result);
+    const result = postArraySchema.parse(data);
+    if(result){
         return result;
-    throw new Error("the variable that fetch data from db is null (data)");
+    }
+    else{
+        throw new Error("the variable that fetch data from db is null (data)");
+    }
+   
     
     
 }

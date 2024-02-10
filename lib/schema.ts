@@ -1,4 +1,4 @@
-import { pgTable, serial, text, varchar,timestamp } from "drizzle-orm/pg-core";
+import { pgTable, serial, text, varchar,timestamp, } from "drizzle-orm/pg-core";
 
 
 export const Post = pgTable("Post", {
@@ -10,3 +10,12 @@ export const Post = pgTable("Post", {
     createdAt: timestamp("created_at").defaultNow(),
     updatedAt: timestamp("updated_at").defaultNow(),
   });
+
+export const User = pgTable("User", {
+  id:serial("id"),
+  username: text("username"),
+  email: text("email"),
+  password: text("password"),
+  createdAt: timestamp("created_at").defaultNow(),
+  updatedAt: timestamp("updated_at").defaultNow(),
+})

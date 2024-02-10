@@ -6,20 +6,16 @@ import {
     CardFooter,
     CardHeader,
 } from "@/components/ui/card";
+import { DtoPost } from "@/lib/Dto-post";
 
-type Props = {
-  author: string | null;
-  description: string | null;
-  image: string | null;
-  date: Date | null;
-};
+
 
 export default function CardWithForm({
   author,
   description,
   image,
   date,
-}: Props) {
+}: DtoPost) {
   return (
     <Card className="w-[350px] flex items-center flex-col justify-center">
       <CardHeader>
