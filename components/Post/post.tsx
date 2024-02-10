@@ -8,18 +8,16 @@ import {
 } from "@/components/ui/card";
 
 type Props = {
-  author: string;
-  description: string;
-  image: string;
-  imageAlt: string;
-  date: Date;
+  author: string | null;
+  description: string | null;
+  image: string | null;
+  date: Date | null;
 };
 
 export default function CardWithForm({
   author,
   description,
   image,
-  imageAlt,
   date,
 }: Props) {
   return (
@@ -30,7 +28,6 @@ export default function CardWithForm({
       <CardContent>
         <div className="grid w-full gap-4">
           <div className="w-auto h-auto">
-            <Image src={image} alt={imageAlt} width={100} height={100} />
           </div>
         </div>
       </CardContent>

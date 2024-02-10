@@ -13,6 +13,8 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { persistPost } from '@/app/addPost/action/persistData';
+
 
 export default function AddPost() {
   const [title, setTitle] = useState("");
@@ -35,12 +37,11 @@ export default function AddPost() {
           <CardDescription>Entrez les informations du post</CardDescription>
         </CardHeader>
         <CardContent>
-          <form onSubmit={handleSubmit}>
-            {" "}
+          <form action={persistPost}>
             <div className="space-y-4">
               <div className="space-y-2">
                 <Label htmlFor="title">Title</Label>
-                <Input
+                <Input name="title"
                   id="title"
                   placeholder="Title"
                   required
@@ -52,16 +53,16 @@ export default function AddPost() {
                 <Label htmlFor="content">Contenu</Label>
                 <Textarea
                   id="content"
+                  name="description"
                   required
                   onChange={(event) => setContent(event.target.value)}
                 />
               </div>
               <Button className="w-full" type="submit">
-                {" "}
                 Ajouter
               </Button>
             </div>
-          </form>{" "}
+          </form>
         </CardContent>
       </Card>
     </div>
