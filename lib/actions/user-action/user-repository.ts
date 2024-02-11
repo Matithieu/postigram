@@ -1,14 +1,14 @@
 "use server";
-import {sql} from "drizzle-orm";
-import { db } from "@/lib/config-db";
-import { Argon2id } from "oslo/password";
-import { cookies } from "next/headers";
 import { lucia, validateRequest } from "@/lib/auth";
-import { redirect } from "next/navigation";
+import { db } from "@/lib/config-db";
 import { UserSchema, UserSchemaWithId } from "@/lib/dto-user";
-import { userTable } from "@/lib/schema";
 import { ActionResult } from "@/lib/form";
+import { userTable } from "@/lib/schema";
+import { sql } from "drizzle-orm";
 import { generateId } from "lucia";
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
+import { Argon2id } from "oslo/password";
 
 export async function login(_: any, formData: FormData):Promise<ActionResult>{
 	const email = formData.get("email") as string;
@@ -54,7 +54,7 @@ export async function signup(_: any, formData: FormData): Promise<ActionResult> 
 	console.log("email: ",email,"password:",password);
 	
 	try {
-        //UserSchema.parse({email:email,password:password}); // verify if username password are correctly set
+        UserSchema.parse({email:email,password:password}); // verify if username password are correctly set
         const hashedPassword = await new Argon2id().hash(password);
 		console.log(hashedPassword);
 	    const userId = generateId(15);
