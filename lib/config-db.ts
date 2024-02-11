@@ -3,11 +3,11 @@ import { Pool } from "pg";
 
 
 const pool = new Pool({
-  host: "0.0.0.0",
+  host: "127.0.0.1",
   port: 5432,
   user: "postgres",
   password: "root",
-  database: "postgres",
+  database: "post",
 });
 
 export const db = drizzle(pool);
