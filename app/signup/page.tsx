@@ -1,35 +1,49 @@
-import Link from "next/link";
-import { validateRequest } from "@/lib/auth";
-import { redirect } from "next/navigation";
-import { Form } from "@/lib/form";
-import {signup} from "@/lib/actions/user-action/user-repository";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
-import { persistPost } from '@/lib/actions/post-action/post-repository';
-
+import { signup } from "@/lib/actions/user-action/user-repository";
+import { validateRequest } from "@/lib/auth";
+import { Form } from "@/lib/form";
+import Link from "next/link";
+import { redirect } from "next/navigation";
 
 export default async function Page() {
-	const { user } = await validateRequest();
-	if (user) {
-		return redirect("/");
-	}
-	return (
-		<>
-			<h1>Create an account</h1>
-			<Form action={signup}>
-				<Label htmlFor="email">Email</Label>
-				<Input name="email" id="email" />
-				<br />
-				<Label htmlFor="password">Password</Label>
-				<Input type="password" name="password" id="password" />
-				<br />
-				<button>Continue</button>
-			</Form>
-			<Link href="/login">Sign in</Link>
-		</>
-	);
+  const { user } = await validateRequest();
+  if (user) {
+    return redirect("/");
+  }
+  return (
+    <>
+      <h1>Create an account</h1>
+      <Form action={signup}>
+        <Card className="w-full max-w-md mx-auto">
+          <CardHeader className="text-center space-y-2">
+            <CardTitle className="text-2xl">Register</CardTitle>
+            <CardDescription>
+              Enter your email to create an account
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="space-y-2">
+              <Label htmlFor="email">Email</Label>
+              <Input
+                id="email"
+                name="email"
+                placeholder="m@example.com"
+                required
+                type="email"
+              />
+            </div>
+            <div className="relative space-y-2">
+              <Label htmlFor="password">Password</Label>
+              <Input id="password" name="password" required type="password" />
+            </div>
+            <Button className="w-full">Register</Button>
+          </CardContent>
+        </Card>
+      </Form>
+      <Link href="/login">Sign in</Link>
+    </>
+  );
 }
-
