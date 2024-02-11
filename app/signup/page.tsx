@@ -1,14 +1,8 @@
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { login } from "@/lib/actions/user-action/user-repository";
+import { signup } from "@/lib/actions/user-action/user-repository";
 import { validateRequest } from "@/lib/auth";
 import { Form } from "@/lib/form";
 import Link from "next/link";
@@ -19,14 +13,13 @@ export default async function Page() {
   if (user) {
     return redirect("/");
   }
-
   return (
     <>
-      <h1>Sign in</h1>
-      <Form action={login}>
+      <h1>Create an account</h1>
+      <Form action={signup}>
         <Card className="w-full max-w-md mx-auto">
           <CardHeader className="text-center space-y-2">
-            <CardTitle className="text-2xl">Login</CardTitle>
+            <CardTitle className="text-2xl">Register</CardTitle>
             <CardDescription>
               Enter your email to create an account
             </CardDescription>
@@ -50,7 +43,7 @@ export default async function Page() {
           </CardContent>
         </Card>
       </Form>
-      <Link href="/signup">Create an account</Link>
+      <Link href="/login">Sign in</Link>
     </>
   );
 }
