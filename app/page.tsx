@@ -1,15 +1,11 @@
 import CardWithForm from "@/components/Post/post";
-import {fetchPost} from "@/lib/actions/post-action/post-repository"
+import { fetchPost } from "@/lib/actions/post-action/post-repository";
 import type { DtoPost } from "@/lib/dto-post";
 
-let posts: DtoPost[]  = [];
-export async function fetchData() {
+let posts: DtoPost[] = [];
+
+export default async function Landing() {
   posts = await fetchPost();
-}
-
-
-export default function Landing() {
-  fetchData();
   return (
     <div className="gap-4 flex flex-col justify-center items-center">
       {posts.map((post, index) => (
