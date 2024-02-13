@@ -1,13 +1,15 @@
 import { drizzle } from "drizzle-orm/node-postgres";
 import { Pool } from "pg";
 
+let { PGHOST, PGDATABASE, PGUSER, PGPASSWORD } = process.env;
 
 const pool = new Pool({
-  host: "127.0.0.1",
+  host: PGHOST ?? "",
   port: 5432,
-  user: "postgres",
-  password: "root",
-  database: "post",
+  user: PGUSER,
+  password: PGPASSWORD,
+  database: PGDATABASE ?? "",
+  ssl: true,
 });
 
 export const db = drizzle(pool);

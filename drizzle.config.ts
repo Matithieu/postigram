@@ -1,5 +1,6 @@
 import type { Config } from "drizzle-kit";
 
+let { PGHOST, PGDATABASE, PGUSER, PGPASSWORD } = process.env;
 
 
 export default {
@@ -7,10 +8,11 @@ export default {
     driver:"pg",
     out: "./drizzle",
     dbCredentials: {
-        host: "127.0.0.1",
+        host: PGHOST ?? "",
         port: 5432,
-        user: "postgres",
-        password: "root",
-        database: "post",
+        user: PGUSER,
+        password: PGPASSWORD,
+        database: PGDATABASE ?? "",
+        ssl: true,
     }
-} satisfies Config;
+} satisfies Config; 
