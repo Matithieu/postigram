@@ -7,7 +7,7 @@ import "./globals.css";
 const fontSans = Inter({
   subsets: ["latin"],
   variable: "--font-sans",
-});
+})
 
 export const metadata: Metadata = {
   title: "Postigram",
