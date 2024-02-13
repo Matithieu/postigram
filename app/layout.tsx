@@ -4,10 +4,10 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
-export const fontSans = Inter({
-  subsets: ["latin"],
+const fontSans = FontSans({
+  subsets: ['latin'],
   variable: "--font-sans",
-});
+})
 
 export const metadata: Metadata = {
   title: "Postigram",
