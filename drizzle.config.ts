@@ -8,11 +8,11 @@ export default {
     driver:"pg",
     out: "./drizzle",
     dbCredentials: {
-        host: PGHOST ?? "",
+        host: PGHOST as string,
         port: 5432,
         user: PGUSER,
         password: PGPASSWORD,
-        database: PGDATABASE ?? "",
+        database: PGDATABASE as string,
         ssl: true,
     }
 } satisfies Config; 

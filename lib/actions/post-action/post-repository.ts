@@ -5,6 +5,7 @@ import {desc} from "drizzle-orm";
 import {z} from "zod";
 import { PostSchema } from "@/lib/dto-post";
 import { validateRequest } from "@/lib/auth";
+import {eq} from "drizzle-orm";
 const postArraySchema  = z.array(PostSchema);
 
 export  async function fetchPost() {
@@ -17,26 +18,31 @@ export  async function fetchPost() {
     }
     else{
         throw new Error("the variable that fetch data from db is null (data)");
-    }
-   
-    
-    
+    }  
 }
 
-export async function persistPost(formData: FormData) {
+export async function persistPost(image_url:string,formData:FormData) {
   const rawFormData = {
     title: formData.get('title') as string,
     description: formData.get('description') as string,
   };
+  console.log("voici l'url de l'image ", image_url);
   const { user } = await validateRequest();
   if(user){
-    await db.insert(postTable).values({author:user.username,name:rawFormData.title,description:rawFormData.description});
+    await db.insert(postTable).values({author:user.username,name:rawFormData.title,description:rawFormData.description,image_url:image_url});
   }
   else{
     throw new Error("veuillez vous connecter")
   }
   // Traitement supplémentaire avec les données du formulaire
   console.log(rawFormData);
+}
+
+
+export async function setPostImageUrlById(id:number,url:string){
+  await db.update(postTable)
+  .set({ id: id})
+  .where(eq(postTable.image_url, url));
 }
 
 
@@ -56,3 +62,8 @@ export async function pagination(itemPerPage:number, pageNumber:number) {
     return result;
 
 }
+
+
+
+
+
