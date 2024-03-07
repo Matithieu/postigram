@@ -12,22 +12,26 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
-import { persistPost } from '@/lib/actions/post-action/post-repository';
+import { handleForm } from '@/lib/actions/post-action/post-repository';
+import type { PutBlobResult } from '@vercel/blob';
+import { useState, useRef } from 'react';
+import { HazeIcon } from "lucide-react";
 
 
 export default function AddPost() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-
+  const inputFileRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
 
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-    console.log("Submitted");
-    event.preventDefault();
-    console.log("Post created");
-    router.push("/");
-  }
+
+  
+  
+  
+  
+
+
+ 
 
   return (
     <div className="flex justify-center items-center m-20">
@@ -37,7 +41,7 @@ export default function AddPost() {
           <CardDescription>Entrez les informations du post</CardDescription>
         </CardHeader>
         <CardContent>
-          <form action={persistPost}>
+          <form action={handleForm} >
             <div className="space-y-4">
               <div className="space-y-2">
                 <Label htmlFor="title">Title</Label>
@@ -58,6 +62,7 @@ export default function AddPost() {
                   onChange={(event) => setContent(event.target.value)}
                 />
               </div>
+              <input name="file" ref={inputFileRef} type="file" required />
               <Button className="w-full" type="submit">
                 Ajouter
               </Button>
