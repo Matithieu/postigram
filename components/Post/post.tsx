@@ -1,14 +1,12 @@
 import Image from "next/image";
 
 import {
-    Card,
-    CardContent,
-    CardFooter,
-    CardHeader,
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
 } from "@/components/ui/card";
 import { DtoPost } from "@/lib/dto-post";
-
-
 
 export default function CardWithForm({
   author,
@@ -24,6 +22,18 @@ export default function CardWithForm({
       <CardContent>
         <div className="grid w-full gap-4">
           <div className="w-auto h-auto">
+            {image ? (
+              <Image
+                src={image ? image : "/"}
+                alt="post image"
+                width={200}
+                height={200}
+                loading="lazy"
+                className="rounded-md"
+              />
+            ) : (
+              <p>No image</p>
+            )}
           </div>
         </div>
       </CardContent>

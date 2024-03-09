@@ -2,36 +2,22 @@
 
 import { Button } from "@/components/ui/button";
 import {
-    Card,
-    CardContent,
-    CardDescription,
-    CardHeader,
-    CardTitle,
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { useRouter } from "next/navigation";
-import { handleForm } from '@/lib/actions/post-action/post-repository';
-import type { PutBlobResult } from '@vercel/blob';
-import { useState, useRef } from 'react';
-import { HazeIcon } from "lucide-react";
-
+import { handleForm } from "@/lib/actions/post-action/post-repository";
+import { useRef, useState } from "react";
 
 export default function AddPost() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const inputFileRef = useRef<HTMLInputElement>(null);
-  const router = useRouter();
-
-
-  
-  
-  
-  
-
-
- 
 
   return (
     <div className="flex justify-center items-center m-20">
@@ -41,11 +27,12 @@ export default function AddPost() {
           <CardDescription>Entrez les informations du post</CardDescription>
         </CardHeader>
         <CardContent>
-          <form action={handleForm} >
+          <form action={handleForm}>
             <div className="space-y-4">
               <div className="space-y-2">
                 <Label htmlFor="title">Title</Label>
-                <Input name="title"
+                <Input
+                  name="title"
                   id="title"
                   placeholder="Title"
                   required

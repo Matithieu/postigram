@@ -6,15 +6,15 @@ export function MenuBar() {
     <Menubar className="relative">
       <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
         <MenubarMenu>
-          <Link href="/">PostiGram</Link>
+          <Link href="/" className="text-2xl">PostiGram</Link>
         </MenubarMenu>
       </div>
 
-      <div className="absolute right-0 top-1/2 transform -translate-y-1/2">
+      {/* <div className="absolute right-0 top-1/2 transform -translate-y-1/2">
         <MenubarMenu>
           <Link href="/login">Login</Link>
         </MenubarMenu>
-      </div>
+      </div> */}
     </Menubar>
   );
 }

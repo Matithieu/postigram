@@ -22,35 +22,49 @@ export default async function Page() {
 
   return (
     <>
-      <h1>Sign in</h1>
-      <Form action={login}>
-        <Card className="w-full max-w-md mx-auto">
-          <CardHeader className="text-center space-y-2">
-            <CardTitle className="text-2xl">Login</CardTitle>
-            <CardDescription>
-              Enter your email to create an account
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
-              <Input
-                id="email"
-                name="email"
-                placeholder="m@example.com"
-                required
-                type="email"
-              />
-            </div>
-            <div className="relative space-y-2">
-              <Label htmlFor="password">Password</Label>
-              <Input id="password" name="password" required type="password" />
-            </div>
-            <Button className="w-full">Register</Button>
-          </CardContent>
-        </Card>
-      </Form>
-      <Link href="/signup">Create an account</Link>
+      <div className="mt-40">
+        <Form action={login}>
+          <Card className="w-full max-w-md mx-auto">
+            <CardHeader className="text-center space-y-2">
+              <CardTitle className="text-2xl">Login</CardTitle>
+              <CardDescription>
+                Enter your credentials to access your account
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="space-y-2">
+                <Label htmlFor="email">Email</Label>
+                <Input
+                  id="email"
+                  name="email"
+                  placeholder="m@example.com"
+                  required
+                  type="email"
+                />
+              </div>
+              <div className="relative space-y-2">
+                <Label htmlFor="password">Password</Label>
+                <Input
+                  id="password"
+                  name="password"
+                  required
+                  type="password"
+                  placeholder="********"
+                />
+              </div>
+              <Button className="w-full">Let&apos;s post !</Button>
+            </CardContent>
+          </Card>
+        </Form>
+        <div className="mt-4 text-center">
+          <p>
+            Don&apos;t have an account?{" "}
+            <Link href="/signup" className="text-blue-500">
+              Register
+            </Link>
+          </p>
+        </div>
+      </div>
     </>
   );
 }
